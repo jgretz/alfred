@@ -5,7 +5,8 @@ This is where I am keeping my hackings around making a smart home. I will add pi
 Gems
 ----------------------------------
 * require_all
+* httparty
 
-DirecTv
+DirecTV
 ----------------------------------
 I am woring with the Genie HR-44. It accepts commands on port 8080. 
