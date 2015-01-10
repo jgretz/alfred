@@ -9,4 +9,4 @@ Gems
 
 DirecTV
 ----------------------------------
-I am woring with the Genie HR-44. It accepts commands on port 8080. 
+I am working with the Genie HR-44. It accepts commands on port 8080. 
