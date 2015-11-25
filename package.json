@@ -1,0 +1,27 @@
+{
+  "name": "alfred",
+  "version": "1.0.0",
+  "description": "home automation and ai",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgretz/alfred.git"
+  },
+  "author": "jgretz@gmail.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jgretz/alfred/issues"
+  },
+  "homepage": "https://github.com/jgretz/alfred#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "glob": "^6.0.1",
+    "node-strict": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  }
+}
