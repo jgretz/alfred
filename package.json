@@ -21,6 +21,7 @@
     "glob": "^6.0.1",
     "node-strict": "^1.0.1",
     "request": "^2.67.0",
+    "say": "^0.6.0",
     "serialport": "^2.0.5"
   },
   "devDependencies": {
