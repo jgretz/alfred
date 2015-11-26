@@ -1,10 +1,6 @@
 var Thought = class Thought {
-	id() {
-		return "";
-	}
-
-	logMessage(message) {
-		console.log(message);
+	constructor(id) {
+		this.id = id;
 	}
 }
 

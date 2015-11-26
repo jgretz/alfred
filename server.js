@@ -16,7 +16,7 @@ glob('./server/thoughts/*.js', (er, files) => {
 	for (i = 0; i < files.length; i++) {
 		var thought = require(files[i]);
 
-		thoughts[thought.id()] = thought;
+		thoughts[thought.id] = thought;
 	}
 });
 
@@ -34,7 +34,7 @@ var defaultHandler = (thoughtName, methodName, res) => {
 		return	
 	}
 
-	method();
+	thought[methodName]();
 
 	res.status(200).send("Now thinking about method '" + thoughtName + "." + methodName + "'.");
 };

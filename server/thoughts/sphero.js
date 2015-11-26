@@ -3,24 +3,33 @@ var Sphero = require('../sphero/sphero.js');
 
 var Thought = require('../thought.js');
 class SpheroControl extends Thought {
-	id() {
-		return "Sphero";
-	}
+	constructor() {
+		super("Sphero");
 
-	status() {
-		var sphero = Sphero();
-		
-		sphero.on('open', function() {
-			console.log("opened");
-			sphero.setRGB(0x0000ff, false);
+		this.sphero = Sphero();
+		this.connected = false;
+
+		this.sphero.on('open', function() {
+			this.connected = true;
 		});
 
-		sphero.on('error', function(error) {
+		this.sphero.on('error', function(error) {
 		  console.log(error);
 		});
 
-		console.log("Trying to open");
-		sphero.open(port);
+		this.sphero.open(port);
+	}
+
+	status() {
+		console.log(this.connected ? "I'm connected to the sphero" : "I'm not connected, sad panda");
+	}
+
+	blue() {
+		if (!this.connected) {
+			return;
+		}
+		
+		this.sphero.setRGB(0x0000ff, false);
 	}
 
 }
