@@ -24,19 +24,19 @@ glob('./server/thoughts/*.js', (er, files) => {
 var defaultHandler = (thoughtName, methodName, res) => {
 	var thought = thoughts[thoughtName];
 	if (thought == null) {
-		res.status(400).send("The thought '" + thoughtName + "' doesn't exist in my mind.");
-		return
+		res.status(400).send(`The thought '${thoughtName}' doesn't exist in my mind.`);
+		return;
 	}
 
 	var method = thought[methodName];
 	if (method == null) {
-		res.status(400).send("The thought '" + thoughtName + "." + methodName + "' doesn't exist in my mind.");
-		return	
+		res.status(400).send(`The thought '${thoughtName}.${methodName}' doesn't exist in my mind.`);
+		return;	
 	}
 
 	thought[methodName]();
 
-	res.status(200).send("Now thinking about method '" + thoughtName + "." + methodName + "'.");
+	res.status(200).send(`Now thinking about method '${thoughtName}.${methodName}'.`);
 };
 
 app.get("/", (req, res) => {
