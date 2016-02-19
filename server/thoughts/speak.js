@@ -10,7 +10,7 @@ class SpeakControl extends Thought {
 	}
 
 	speak() {
-		say.speak('Ralph', 'Yes Sir');
+		say.speak('Ralph', 'Coffee Is For Closers');
 	}
 }
 

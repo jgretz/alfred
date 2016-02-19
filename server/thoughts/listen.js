@@ -6,6 +6,10 @@ class ListenControl extends Thought {
 
 	status() {
 	}
+
+	listen() {
+		
+	}
 }
 
 module.exports = new ListenControl();

@@ -38,13 +38,25 @@ class DirecTVControl extends Thought {
 	pause() {
 		this.request("remote/processKey?key=pause", (response) => {
 			console.log(response);
-		});	
+		});
 	}
 
 	advance() {
 		this.request("remote/processKey?key=advance", (response) => {
 			console.log(response);
-		});		
+		});
+	}
+
+	poweron() {
+		this.request("remote/processKey?key=poweron", (response) => {
+			console.log(response);
+		});
+	}
+
+  dash() {
+		this.request("remote/processKey?key=dash", (response) => {
+			console.log(response);
+		});
 	}
 }
 
