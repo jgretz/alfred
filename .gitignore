@@ -1,1 +1,11 @@
-/node_modules
+.idea/
+node_modules/
+dist/
+npm-debug.log
+app/styles/styles.min.css
+.DS_Store
+yarn-error.log
+lib/
+private.js
+
+import/data

@@ -1,0 +1,60 @@
+{
+  "name": "alfred-api",
+  "version": "1.0.0",
+  "description": "api for alfred",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write \"**/*.js\"",
+    "start": "babel-node index.js",
+    "start:dev": "nodemon",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "build": "babel -d lib/ src"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.10.5",
+    "@nestjs/core": "^6.10.5",
+    "@nestjs/cqrs": "^6.1.0",
+    "@nestjs/microservices": "^6.10.5",
+    "@nestjs/platform-express": "^6.10.5",
+    "@nestjs/serve-static": "^1.0.2",
+    "@nestjs/websockets": "^6.10.5",
+    "core-js": "3.4.7",
+    "moment": "^2.24.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-external-helpers": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@babel/plugin-proposal-pipeline-operator": "^7.7.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.7.4",
+    "@nestjs/testing": "^6.10.5",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.1.1",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.js$",
+    "coverageDirectory": "../coverage"
+  }
+}
