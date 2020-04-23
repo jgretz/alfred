@@ -35,6 +35,7 @@ module.exports = {
     'react/display-name': 0,
     'react/jsx-no-target-blank': 0,
     'react/jsx-props-no-spreading': 0,
+    'react/destructuring-assignment': 0,
 
     'import/no-named-as-default': 0,
     'import/prefer-default-export': 0,
@@ -42,6 +43,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 0,
 
     'no-shadow': 0,
+    'no-plusplus': 0,
   },
   ignorePatterns: ['node_modules/', 'build/', 'lib/'],
 };
