@@ -1,34 +1,17 @@
 {
-  "name": "botb-list",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "build-server": "node tools/build_server.js",
-    "build-site": "node tools/build_site.js",
-    "start": "nodemon src/index.js --exec babel-node",
-    "build": "node tools/build.js",
-    "test": "echo future",
-    "publish": "yarn build && git subtree push --prefix lib heroku master"
-  },
-  "author": "Josh Gretz",
+  "name": "alfred-build",
+  "author": "jgretz",
   "license": "MIT",
+  "scripts": {
+    "build": "ts-node ./tools/build.ts",
+    "test": "echo test"
+  },
   "dependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/node": "^7.6.2",
-    "@babel/plugin-external-helpers": "^7.2.0",
-    "@babel/plugin-proposal-decorators": "^7.6.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
-    "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/register": "^7.6.2",
-    "@nestjs/testing": "^6.8.2",
-    "jest": "^24.9.0",
-    "nodemon": "^1.19.3",
-    "prettier": "^1.18.2",
-    "shelljs": "^0.8.3",
-    "supertest": "^4.0.2"
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.2",
+    "ts-node": "^8.9.0",
+    "typescript": "^3.8.3"
   }
 }

@@ -1,3 +1,4 @@
 {
-    "language":"js"
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src"
 }
