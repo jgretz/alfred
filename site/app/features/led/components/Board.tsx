@@ -1,14 +1,17 @@
-import React, {FunctionComponent} from 'react';
+import React from 'react';
 
-import {compose} from '@truefit/bach';
+import {compose, withMemo} from '@truefit/bach';
 import {withStyles} from '@truefit/bach-material-ui';
 
 import {CSSProperties} from '@material-ui/styles';
+import {Scene, mapSceneIn2D, Flag} from 'dot-matrix';
 import Led from './Led';
 
 type PublicProps = {
   rows: number;
   columns: number;
+
+  scene: Scene;
 };
 
 type InternalProps = {
@@ -17,48 +20,73 @@ type InternalProps = {
     row: string;
     cell: string;
   };
+
+  map: Flag[][];
 };
 
 type Props = PublicProps & InternalProps;
 
-const make = (
-  keyPrefix: string,
-  Component: FunctionComponent<Props>,
-  count: number,
-  props: Props,
-) => {
-  const components = [];
-  for (let i = 0; i < count; i++) {
-    components.push(<Component key={`${keyPrefix}-${i}`} {...props} />);
-  }
-  return components;
+enum LedStateColor {
+  Off = '#000',
+  On = '#FFF',
 };
 
-const Column = ({classes}: Props) => (
-  <div className={classes.cell}>
-    <Led color="#FF0000" />
-  </div>
-);
+const mapLedColor = (flag: Flag): string => {
+  if (typeof flag === 'string') {
+    return flag;
+  }
 
-const Row = (props: Props) => (
-  <div className={props.classes.row}>{make('column', Column, props.columns, props)}</div>
-);
+  return flag === 1 ? LedStateColor.On : LedStateColor.Off;
+};
 
-const Board = (props: Props) => {
-  return <div className={props.classes.container}>{make('row', Row, props.rows, props)}</div>;
+const Board = ({classes, rows, columns, map}: Props) => {
+  // easier to do this with context, rather than pushing everything down
+  const rowComponents = [];
+  for (let row = 0; row < rows; row++) {
+    const columnComponents = [];
+    for (let column = 0; column < columns; column++) {
+      const flag = map[row][column];
+      const columnJsx = (
+        <div key={`led-${row}-${column}`} className={classes.cell}>
+          <Led color={mapLedColor(flag)} />
+        </div>
+      );
+
+      columnComponents.push(columnJsx);
+    }
+
+    const rowJsx = (
+      <div key={`row-${row}`} className={classes.row}>
+        {columnComponents}
+      </div>
+    );
+    rowComponents.push(rowJsx);
+  }
+
+  return (
+    <div className={classes.container}>
+      {rowComponents}
+    </div>
+  );
 };
 
 const styles = {
   container: {
     display: 'flex',
-  },
+    flexDirection: 'column',
+  } as CSSProperties,
   row: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
   } as CSSProperties,
   cell: {
     margin: 3,
   },
 };
 
-export default compose<PublicProps>(withStyles(styles))(Board);
+const makeMap = ({scene, rows, columns}: Props) => mapSceneIn2D(scene, rows, columns);
+
+export default compose<PublicProps>(
+  withMemo('map', makeMap),
+  withStyles(styles)
+)(Board);

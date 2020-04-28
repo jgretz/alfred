@@ -13,7 +13,8 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "rootReducer": ["app/rootReducer.ts"]
+      "rootReducer": ["app/rootReducer.ts"],
+      "dot-matrix": ["../dot-matrix/index.ts"]
     }
   },
   "include": ["./app/**/*", "./webpack.config.*"],

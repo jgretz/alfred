@@ -10,16 +10,18 @@ type InternalProps = {
   classes: {
     led: string;
   };
+
+  children: React.ReactNode;
 };
 
 type Props = PublicProps & InternalProps;
 
-const Led = ({classes}: Props) => <div className={classes.led} />;
+const Led = ({classes, children}: Props) => <div className={classes.led}>{children}</div>;
 
 const styles = {
   led: {
-    width: 24,
-    height: 24,
+    width: 50,
+    height: 50,
     backgroundColor: ({color}: PublicProps) => color,
     borderRadius: '50%',
   },

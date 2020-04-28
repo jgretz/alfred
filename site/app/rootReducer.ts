@@ -3,13 +3,16 @@
 /* eslint-disable object-shorthand */
 import {combineReducers} from 'redux';
 
+
 export type ApplicationState = {
-  features: {};
+  features: {
+  };
 };
 
 const createRootReducer = () =>
   combineReducers({
-    features: combineReducers({}),
+    features: combineReducers({
+    }),
   });
 
 export default createRootReducer;

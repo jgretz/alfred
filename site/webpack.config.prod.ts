@@ -50,6 +50,7 @@ export default {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       rootReducer: path.resolve(__dirname, './app/rootReducer'),
+      'dot-matrix': path.resolve(__dirname, '../dot-matrix/index'),
     },
   },
 
