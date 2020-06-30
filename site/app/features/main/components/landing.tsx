@@ -3,7 +3,7 @@ import React from 'react';
 import {compose} from '@truefit/bach';
 import {withStyles} from '@truefit/bach-material-ui';
 
-import ScrollingText from './ScrollingText';
+import {Conway} from '../../conway/components';
 
 type Props = {
   classes: {
@@ -13,7 +13,7 @@ type Props = {
 
 const Landing = ({classes}: Props) => (
   <div className={classes.container}>
-    <ScrollingText text="" />
+    <Conway />
   </div>
 );
 

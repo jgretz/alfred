@@ -4,7 +4,7 @@ import {compose, withMemo} from '@truefit/bach';
 import {withStyles} from '@truefit/bach-material-ui';
 
 import {CSSProperties} from '@material-ui/styles';
-import {Scene, mapSceneIn2D, Flag} from 'dot-matrix';
+import {Scene, mapSceneIn2D, Flag} from '@jgretz/dot-matrix';
 import Led from './Led';
 
 type PublicProps = {
@@ -29,7 +29,7 @@ type Props = PublicProps & InternalProps;
 enum LedStateColor {
   Off = '#000',
   On = '#FFF',
-};
+}
 
 const mapLedColor = (flag: Flag): string => {
   if (typeof flag === 'string') {
@@ -63,11 +63,7 @@ const Board = ({classes, rows, columns, map}: Props) => {
     rowComponents.push(rowJsx);
   }
 
-  return (
-    <div className={classes.container}>
-      {rowComponents}
-    </div>
-  );
+  return <div className={classes.container}>{rowComponents}</div>;
 };
 
 const styles = {
@@ -86,7 +82,4 @@ const styles = {
 
 const makeMap = ({scene, rows, columns}: Props) => mapSceneIn2D(scene, rows, columns);
 
-export default compose<PublicProps>(
-  withMemo('map', makeMap),
-  withStyles(styles)
-)(Board);
+export default compose<PublicProps>(withMemo('map', makeMap), withStyles(styles))(Board);

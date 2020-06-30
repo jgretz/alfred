@@ -1,3 +1,3 @@
 /* eslint-disable import/prefer-default-export */
 
-export {default as Landing} from './landing';
+export {default as Conway} from './Conway';

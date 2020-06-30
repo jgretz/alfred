@@ -1,9 +1,9 @@
 import React from 'react';
 
 import {compose, withMemo, withState, withEffect} from '@truefit/bach';
-import {Text, BasicFont} from 'dot-matrix';
+import {Text, BasicFont} from '@jgretz/dot-matrix';
 
-import {Board} from '../../led/components';
+import Board from './Board';
 
 // types
 type PublicProps = {
@@ -22,15 +22,15 @@ type Props = PublicProps & InternalProps;
 // constants
 const width = 32;
 const y = 1;
-const frameRate = 4 / 60 * 1000;
+const frameRate = (4 / 60) * 1000;
 
 // render
 const ScrollingText = ({scene}: Props) => <Board rows={8} columns={width} scene={scene} />;
 
 // handlers
 const widthForText = (text: string) => {
-  return (text.length * BasicFont.width + text.length * BasicFont.spacing);
-}
+  return text.length * BasicFont.width + text.length * BasicFont.spacing;
+};
 
 const initialX = ({text}: Props) => width;
 
@@ -41,8 +41,8 @@ const move = ({text, x, setX}: Props) => {
     } else {
       setX(x - 1);
     }
-  }, frameRate)
-}
+  }, frameRate);
+};
 
 const makeScene = ({text, x}: Props) => {
   return new Text(text, {x, y});

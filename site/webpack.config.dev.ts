@@ -52,7 +52,6 @@ export default {
     modules: ['node_modules'],
     alias: {
       rootReducer: path.resolve(__dirname, './app/rootReducer'),
-      'dot-matrix': path.resolve(__dirname, '../dot-matrix/index'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
