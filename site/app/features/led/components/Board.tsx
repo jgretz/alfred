@@ -4,7 +4,7 @@ import {compose, withMemo} from '@truefit/bach';
 import {withStyles} from '@truefit/bach-material-ui';
 
 import {CSSProperties} from '@material-ui/styles';
-import {Scene, mapSceneIn2D, Flag} from '@jgretz/dot-matrix';
+import {Scene, mapSceneIn2D, Flag, Point} from '@jgretz/dot-matrix';
 import Led from './Led';
 
 type PublicProps = {
@@ -12,6 +12,9 @@ type PublicProps = {
   columns: number;
 
   scene: Scene;
+
+  ledSize?: number;
+  onLedClick?: (point: Point) => () => void;
 };
 
 type InternalProps = {
@@ -39,16 +42,18 @@ const mapLedColor = (flag: Flag): string => {
   return flag === 1 ? LedStateColor.On : LedStateColor.Off;
 };
 
-const Board = ({classes, rows, columns, map}: Props) => {
+const Board = ({classes, rows, columns, ledSize, onLedClick, map}: Props) => {
   // easier to do this with context, rather than pushing everything down
   const rowComponents = [];
   for (let row = 0; row < rows; row++) {
     const columnComponents = [];
     for (let column = 0; column < columns; column++) {
       const flag = map[row][column];
+      const onClick = onLedClick ? onLedClick({x: column, y: row}) : null;
+
       const columnJsx = (
         <div key={`led-${row}-${column}`} className={classes.cell}>
-          <Led color={mapLedColor(flag)} />
+          <Led color={mapLedColor(flag)} size={ledSize} onClick={onClick} />
         </div>
       );
 
